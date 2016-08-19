@@ -1,5 +1,13 @@
-<h1>Just Do It</h1>
-<h2><%= @list.chore %></h2>
-<h3><%=@list.description%></h3>
+<h1>Just Do Your List</h1>
+<h2><%= @list.name %></h2>
+<p><%=@list.date %></p>
 
-<%=link_to 'Back', lists_path %>
+  <%= render(partial:'items') %>
+
+<%= link_to 'Add Items to List', new_list_item_path(@list) %>
+<br />
+<%=link_to 'Edit List Name', edit_list_path %>
+<br />
+<%= link_to 'Delete List?', list_path(@list), method: :delete, data: {confirm: 'Delete whole list?'} %>
+<br />
+<%=link_to '<< Back', lists_path %>

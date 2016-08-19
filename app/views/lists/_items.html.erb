@@ -1,0 +1,15 @@
+
+<% if [@list, @items].any? %>
+
+<ul>
+  <% @items.each do |item| %>
+
+    <li><%= link_to item.item_name, list_item_path(@list, item) %></li>
+
+  <% end %>
+</ul>
+
+
+<% else %>
+  <h3> No items in your list, Please Create One.</h3>
+<% end %>

@@ -1,0 +1,8 @@
+<h2><%= @list.name %></h2>
+<h3><%= @item.item_name %></h3>
+
+
+  <p>notes: <%= @item.note %></p>
+  <p><%= link_to 'Edit Item', edit_list_item_path(@list, @item) %></p>
+
+  <%=link_to '<< Back', list_path(@list) %>

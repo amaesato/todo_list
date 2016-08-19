@@ -1,10 +1,9 @@
 class CreateLists < ActiveRecord::Migration[5.0]
   def change
     create_table :lists do |t|
-      t.string :chore
-      t.text :description
-      t.integer :priority
-      t.boolean :complete
+      t.string :name, null: false
+      t.date :date
+      t.boolean :completed, default: false
 
       t.timestamps
     end

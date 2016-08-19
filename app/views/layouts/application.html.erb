@@ -9,7 +9,9 @@
   </head>
 
   <body>
-    <%= render 'layouts/navbar' %>
+    <div class="wrapper">
+    <%=link_to 'Home', root_path%> | <%=link_to 'To Do List', lists_path%> | <%=link_to 'Completed', complete_path%>
     <%= yield %>
+  </div>
   </body>
 </html>

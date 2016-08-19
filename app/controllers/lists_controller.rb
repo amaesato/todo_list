@@ -1,14 +1,12 @@
 class ListsController < ApplicationController
+  before_action :list, only: [:edit, :update, :destroy, :show]
+
   def index
-    @lists = List.all
+    @lists = List.where(completed: false)
   end
 
   def show
-    @list = List.find(params[:id])
-  end
-
-  def edit
-    @list = List.find(params[:id])
+    @items = @list.items.list_priority
   end
 
   def new
@@ -25,13 +23,10 @@ class ListsController < ApplicationController
     end
   end
 
-  def complete
-
+  def edit
   end
 
   def update
-  @list = List.find(params[:id])
-
     if @list.update(list_params)
       redirect_to lists_path(@list)
     else
@@ -39,8 +34,11 @@ class ListsController < ApplicationController
     end
   end
 
+  def complete
+    @items = Item.where(completed: true)
+  end
+
   def destroy
-    @list = List.find(params[:id])
     @list.destroy
     redirect_to lists_path
   end
@@ -49,8 +47,11 @@ class ListsController < ApplicationController
   private
 
   def list_params
-    params.require(:list).permit(:chore, :description, :complete)
+    params.require(:list).permit(:name, :date, :completed)
   end
 
+  def list
+    @list = List.find(params[:id])
+  end
 
 end

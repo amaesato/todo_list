@@ -1,0 +1,16 @@
+<%= form_for [@list, @item] do |f| %>
+  <%= f.label :item_name, 'Item Name'%>
+  <%= f.text_field :item_name, required: true %>
+
+  <br />
+  <%= f.label :note %>
+  <%= f.text_field :note %>
+  <br />
+  <%= f.label :priority %>
+  <%= f.select :priority, Item.priority %>
+  <br />
+  <%= f.label :completed %>
+  <%= f.radio_button :completed, :checked => true %>
+
+<%= f.submit %>
+<%end%>

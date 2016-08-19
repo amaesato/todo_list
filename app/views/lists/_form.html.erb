@@ -1,0 +1,13 @@
+<%= form_for @list do |f| %>
+  <%= f.label :name, 'List Name'%>
+  <%= f.text_field :name, required: true %>
+
+  <br />
+  <%= f.label :date,'Created On' %>
+  <%= f.date_field :date %>
+
+<%= f.label :completed %>
+<%= f.radio_button :completed, :checked => true %>
+
+<%= f.submit %>
+<%end%>

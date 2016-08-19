@@ -10,18 +10,28 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160816213852) do
+ActiveRecord::Schema.define(version: 20160818224009) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
+  create_table "items", force: :cascade do |t|
+    t.string   "item_name",                  null: false
+    t.string   "note"
+    t.boolean  "completed",  default: false
+    t.string   "priority"
+    t.integer  "list_id"
+    t.datetime "created_at",                 null: false
+    t.datetime "updated_at",                 null: false
+    t.index ["list_id"], name: "index_items_on_list_id", using: :btree
+  end
+
   create_table "lists", force: :cascade do |t|
-    t.string   "chore"
-    t.text     "description"
-    t.integer  "priority"
-    t.boolean  "complete"
-    t.datetime "created_at",  null: false
-    t.datetime "updated_at",  null: false
+    t.string   "name",                       null: false
+    t.date     "date"
+    t.boolean  "completed",  default: false
+    t.datetime "created_at",                 null: false
+    t.datetime "updated_at",                 null: false
   end
 
 end
